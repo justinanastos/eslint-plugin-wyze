@@ -15,7 +15,7 @@
     "lint": "eslint lib index.js",
     "prelint": "npm link && npm link eslint-plugin-wyze",
     "pretest": "npm run lint",
-    "test": "jest",
+    "test": "mocha lib/rules/__tests__/**/*.test.js",
     "version": "node scripts/version.js"
   },
   "files": [
@@ -33,9 +33,6 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.2.1",
-    "babel-jest": "^19.0.0",
-    "babel-plugin-transform-inline-imports-commonjs": "^1.2.0",
-    "babel-preset-env": "^1.2.2",
     "changelog-maker": "^2.2.5",
     "eslint": "^3.18.0",
     "eslint-config-airbnb": "^14.1.0",
@@ -43,26 +40,11 @@
     "eslint-plugin-eslint-comments": "^1.0.0",
     "eslint-plugin-import": "^2.2.0",
     "execa": "^0.6.3",
-    "jest": "^19.0.2",
+    "mocha": "^3.2.0",
     "read-pkg": "^2.0.0"
   },
   "peerDependencies": {
     "eslint": "^3.0.0"
-  },
-  "babel": {
-    "plugins": [
-      "transform-inline-imports-commonjs"
-    ],
-    "presets": [
-      [
-        "env",
-        {
-          "targets": {
-            "node": true
-          }
-        }
-      ]
-    ]
   },
   "eslintConfig": {
     "env": {
@@ -84,15 +66,5 @@
       ],
       "strict": "off"
     }
-  },
-  "jest": {
-    "snapshotSerializers": [
-      "<rootDir>/lib/rules/__tests__/serializers/serializer-eslint-filepath"
-    ],
-    "testPathIgnorePatterns": [
-      "/fixtures/",
-      "/node_modules/",
-      "/serializers/"
-    ]
   }
 }
